@@ -1,0 +1,103 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="17" android:versionName="1.1.12-preview" android:compileSdkVersion="37" android:compileSdkVersionCodename="17" package="com.example.lazyalarm.preview" platformBuildVersionCode="37" platformBuildVersionName="17">
+  <uses-sdk android:minSdkVersion="31" android:targetSdkVersion="37"/>
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+  <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+  <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS"/>
+  <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+  <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+  <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+  <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+  <uses-feature android:name="android.hardware.vibrator" android:required="false"/>
+  <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+  <queries>
+    <intent>
+      <action android:name="android.intent.action.MAIN"/>
+      <category android:name="android.intent.category.LAUNCHER"/>
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.MAIN"/>
+      <category android:name="android.intent.category.HOME"/>
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.EMERGENCY_DIAL"/>
+    </intent>
+  </queries>
+  <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+  <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+  <permission android:name="com.example.lazyalarm.preview.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="com.example.lazyalarm.preview.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+  <application android:theme="@7F12026B" android:label="@7F110037" android:icon="@7F080097" android:name="com.example.lazyalarm.LazyAlarmApplication" android:debuggable="true" android:allowBackup="false" android:supportsRtl="true" android:extractNativeLibs="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:dataExtractionRules="@7F140001">
+    <activity android:theme="@7F12026D" android:name="com.example.lazyalarm.UnlockActivity" android:exported="false" android:excludeFromRecents="true"/>
+    <activity android:theme="@7F12026E" android:name="com.example.lazyalarm.SelfLockActivity" android:exported="false" android:excludeFromRecents="true" android:launchMode="2"/>
+    <activity android:name="com.example.lazyalarm.TargetPickerActivity" android:exported="false"/>
+    <activity android:name="com.example.lazyalarm.SettingsActivity" android:exported="false"/>
+    <activity android:name="com.example.lazyalarm.PermissionSetupActivity" android:exported="false"/>
+    <activity android:name="com.example.lazyalarm.AlarmEditorActivity" android:exported="false"/>
+    <activity android:name="com.example.lazyalarm.ImmediateFocusActivity" android:exported="false"/>
+    <activity android:theme="@7F12026C" android:name="com.example.lazyalarm.AlarmActivity" android:exported="false" android:taskAffinity="" android:excludeFromRecents="true" android:launchMode="3" android:showWhenLocked="true" android:turnScreenOn="true"/>
+    <activity android:name="com.example.lazyalarm.HomeActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <service android:name="com.example.lazyalarm.AlarmRingService" android:exported="false" android:foregroundServiceType="0x00000002"/>
+    <service android:name="com.example.lazyalarm.AlarmGuardService" android:exported="false" android:foregroundServiceType="0x40000000">
+      <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Waits until the next alarm so it can ring at the exact set time"/>
+    </service>
+    <service android:name="com.example.lazyalarm.FocusSessionService" android:exported="false" android:foregroundServiceType="0x40000000">
+      <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-visible focus session countdown and foreground enforcement"/>
+    </service>
+    <service android:label="@7F11001C" android:name="com.example.lazyalarm.LockAccessibilityService" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:exported="true" android:description="@7F11001B" android:stopWithTask="false">
+      <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService"/>
+      </intent-filter>
+      <meta-data android:name="android.accessibilityservice" android:resource="@7F140000"/>
+    </service>
+    <receiver android:name="com.example.lazyalarm.AlarmReceiver" android:exported="false"/>
+    <receiver android:name="com.example.lazyalarm.ExactAlarmPermissionReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.example.lazyalarm.BootCompletedReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.example.lazyalarm.TimeChangeReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.TIME_SET"/>
+        <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+        <action android:name="android.intent.action.DATE_CHANGED"/>
+      </intent-filter>
+    </receiver>
+    <provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="com.example.lazyalarm.preview.androidx-startup">
+      <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+    </provider>
+    <receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP" android:enabled="true" android:exported="true" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+      </intent-filter>
+    </receiver>
+  </application>
+</manifest>

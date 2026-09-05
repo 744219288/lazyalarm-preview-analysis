@@ -1,0 +1,78 @@
+{
+  "app_name": "懒人闹钟预览",
+  "package": "com.example.lazyalarm.preview",
+  "version_name": "1.1.12-preview",
+  "version_code": 17,
+  "min_sdk": 31,
+  "target_sdk": 37,
+  "main_activity": "com.example.lazyalarm.HomeActivity",
+  "apk_path": "C:/Users/fk123/Desktop/懒人闹钟-新版预览.apk",
+  "apk_size": 14954611,
+  "apk_sha256": "97df9a69dc33d24b1f9da32714376393e4d784567f8c6a6ffcc0f85515e15592",
+  "signature": {
+    "v1": false,
+    "v2": true,
+    "v3": false,
+    "cert_subject": "Common Name: Android Debug, Organization: Android, Country: US",
+    "cert_serial": "0x1",
+    "type": "Android Debug Certificate (preview/debug build)"
+  },
+  "size_breakdown": {
+    "uncompressed_total": 15173515,
+    "compressed_total": 14954611,
+    "dex (代码)": "12.14 MB (83%)",
+    "resources.arsc (资源表)": "1.21 MB (8%)",
+    "res/ (资源)": "1.05 MB (7%)",
+    "kotlin_builtins": "0.03 MB (~0%)",
+    "manifest_and_other": "~0.06 MB (~0%)"
+  },
+  "platform": {
+    "language": "Kotlin",
+    "dex_count": 5,
+    "uses_material3": true,
+    "uses_appcompat": true
+  },
+  "activities": [
+    "com.example.lazyalarm.HomeActivity",
+    "com.example.lazyalarm.AlarmEditorActivity",
+    "com.example.lazyalarm.AlarmActivity",
+    "com.example.lazyalarm.TargetPickerActivity",
+    "com.example.lazyalarm.ImmediateFocusActivity",
+    "com.example.lazyalarm.SelfLockActivity",
+    "com.example.lazyalarm.UnlockActivity",
+    "com.example.lazyalarm.SettingsActivity",
+    "com.example.lazyalarm.PermissionSetupActivity"
+  ],
+  "services": [
+    "com.example.lazyalarm.AlarmRingService",
+    "com.example.lazyalarm.LockAccessibilityService",
+    "com.example.lazyalarm.FocusSessionService",
+    "com.example.lazyalarm.AlarmGuardService"
+  ],
+  "receivers": [
+    "com.example.lazyalarm.TimeChangeReceiver",
+    "com.example.lazyalarm.ExactAlarmPermissionReceiver",
+    "com.example.lazyalarm.AlarmReceiver",
+    "com.example.lazyalarm.BootCompletedReceiver"
+  ],
+  "permissions": [
+    "android.permission.FOREGROUND_SERVICE",
+    "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+    "android.permission.FOREGROUND_SERVICE_SPECIAL_USE",
+    "android.permission.PACKAGE_USAGE_STATS",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.POST_PROMOTED_NOTIFICATIONS",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
+    "android.permission.SCHEDULE_EXACT_ALARM",
+    "android.permission.SYSTEM_ALERT_WINDOW",
+    "android.permission.USE_BIOMETRIC",
+    "android.permission.USE_EXACT_ALARM",
+    "android.permission.USE_FINGERPRINT",
+    "android.permission.USE_FULL_SCREEN_INTENT",
+    "android.permission.VIBRATE",
+    "android.permission.WAKE_LOCK",
+    "com.example.lazyalarm.preview.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ]
+}
